@@ -10,10 +10,9 @@ npm run dev
 
 ### 하셔야 할것
 
-pages/index.js compoentDidMount 참고 하셔서 
-line 132 
-const position = new naver.maps.LatLng(37.3595704, 127.105399)  
-=> const position = new naver.maps.LatLng(this.props.latitude, this.props.longitude) 바꺼주세요
+next.config.js
+
+publicRuntimeConfig.mode = 'production'
 
 ## 문제점
 

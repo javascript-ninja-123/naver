@@ -227,13 +227,13 @@ var fetchSearhDataEpic = function fetchSearhDataEpic(action$) {
   return action$.pipe(Object(redux_observable__WEBPACK_IMPORTED_MODULE_0__["ofType"])(_actions__WEBPACK_IMPORTED_MODULE_4__["SearchType"].SEARCH), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["debounceTime"])(500), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (_ref) {
     var payload = _ref.payload;
     return Object(rxjs_ajax__WEBPACK_IMPORTED_MODULE_3__["ajax"])({
-      url: "/search",
-      method: "POST",
+      url: '/search',
+      method: 'POST',
       body: {
         searchText: payload
       },
       headers: {
-        contentType: "application/json; charset=utf-8"
+        contentType: 'application/json; charset=utf-8'
       }
     });
   }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref2) {

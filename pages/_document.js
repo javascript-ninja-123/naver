@@ -1,7 +1,10 @@
-import Document, { Head, Main, NextScript } from 'next/document'
-
+import Document, { Head, Main, NextScript } from 'next/document';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 export default class MyDocument extends Document {
-
+  static async getInitialProps (ctx) {
+    return await Document.getInitialProps(ctx)
+  }
   render() {
     return (
       <html>
@@ -13,41 +16,33 @@ export default class MyDocument extends Document {
           html{font-size:62.5%} 
           
           body { margin: 0 }
-
-          .info_window{
-            display:flex;
-            align-items:center;
+          .overlay{
+            position:absolute;
+            left:0;
+            top:0;
+            width:21.4rem;
+            height:5.6rem;
+            background-color:#D84315;
+            border-radius:2px;
             color:white;
-            border-radius:4px;
-            padding:1.5rem 1rem;
-            width:26.8rem;
-            justify-content:space-around;
-          }
-          .info_window img{
-            width:3rem;
-          }
-          .info_window p, .info_window h3{
-            margin:0 !important;
-          }
-          .info_window .first-wrapper{
             display: flex;
-              align-items: center;
-          }
-          .info_window .first-text-wrapper{
-            display:flex;
-            flex-direction:column;
-            margin-left:.6rem;
-            text-align:center;
+            align-items: center;
+            padding: 0 1.4rem;
+            box-sizing: border-box;
+            font-size:1.6rem;
           }
           
           `}</style>
-          <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=n4vss9n2ob&submodules=geocoder"></script>
+          <script
+            type="text/javascript"
+            src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${publicRuntimeConfig.naverClientId}`}
+          />
         </Head>
         <body className="custom_class">
           <Main />
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }
